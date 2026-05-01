@@ -3,30 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supadeurali Charging Center | Fast EV Charging</title>
+    <title>Supadeurali Charging Center | 80kW Fast Charging</title>
     <style>
         :root {
-            --primary: #2ecc71;
-            --secondary: #27ae60;
-            --dark: #2c3e50;
-            --light: #f4f7f6;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --primary: #00c853;
+            --secondary: #1b5e20;
+            --dark: #121212;
+            --light: #ffffff;
+            --gray: #f4f4f4;
         }
 
         body {
-            background-color: var(--light);
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--gray);
             color: var(--dark);
-            line-height: 1.6;
         }
 
+        /* Header */
         header {
-            background-color: white;
+            background: var(--light);
             padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
@@ -37,155 +33,173 @@
             z-index: 1000;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        nav a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--primary);
-        }
-
-        .hero {
-            height: 60vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&q=80&w=1472') center/cover;
+        .logo-container {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            gap: 10px;
+        }
+
+        .logo-text {
+            font-weight: 900;
+            font-size: 1.4rem;
+            color: var(--secondary);
+            letter-spacing: -1px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&q=80&w=1472') center/cover;
             color: white;
+            padding: 80px 5%;
             text-align: center;
+        }
+
+        .power-badge {
+            background: var(--primary);
+            color: black;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        /* Specs Grid */
+        .specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: -50px auto 40px;
             padding: 0 20px;
         }
 
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            background-color: var(--primary);
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            background-color: var(--secondary);
-            transform: scale(1.05);
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 50px 5%;
+        .spec-card {
             background: white;
-        }
-
-        .feature-card {
-            text-align: center;
             padding: 30px;
-            border-radius: 10px;
-            background: var(--light);
-            transition: 0.3s;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
+        .spec-card h3 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin: 10px 0;
+        }
+
+        /* Map Section */
+        .map-section {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .map-box {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .feature-card i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            display: block;
+        .map-info {
+            padding: 25px;
+            border-bottom: 1px solid #eee;
         }
 
-        .footer {
+        .contact-btn {
+            background: var(--dark);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        /* Footer */
+        footer {
             background: var(--dark);
             color: white;
             text-align: center;
-            padding: 30px;
-            margin-top: 50px;
+            padding: 50px 20px;
+            margin-top: 60px;
         }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
-            nav { display: none; }
+            .map-box iframe { height: 300px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">Supadeurali Charging</div>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#location">Find Us</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+<header>
+    <div class="logo-container">
+        <span style="font-size: 2rem;">⚡</span>
+        <span class="logo-text">SUPADEURALI CHARGING CENTER</span>
+    </div>
+    <div style="font-weight: bold; color: var(--primary);">OPEN 24/7</div>
+</header>
 
-    <section class="hero" id="home">
-        <h1>Powering Your Journey</h1>
-        <p>Reliable and High-Speed EV Charging for a Greener Tomorrow.</p>
-        <a href="#location" class="btn">Find a Station</a>
-    </section>
+<section class="hero">
+    <div class="power-badge">80kW Ultra-Fast DC</div>
+    <h1>Supadeurali Charging Center</h1>
+    <p>Premium Electric Vehicle Charging Hub in Kapilvastu</p>
+</section>
 
-    <section class="features" id="services">
-        <div class="feature-card">
-            <i>⚡</i>
-            <h3>Ultra Fast Charging</h3>
-            <p>Level 3 DC Fast Chargers to get you back on the road in minutes, not hours.</p>
-        </div>
-        <div class="feature-card">
-            <i>🛡️</i>
-            <h3>Safe & Secure</h3>
-            <p>24/7 monitored stations with premium safety protocols for you and your vehicle.</p>
-        </div>
-        <div class="feature-card">
-            <i>☕</i>
-            <h3>Comfort Lounge</h3>
-            <p>Enjoy free Wi-Fi and refreshments while your vehicle charges up.</p>
-        </div>
-    </section>
+<div class="specs">
+    <div class="spec-card">
+        <p>Capacity</p>
+        <h3>80kW</h3>
+        <p>High Power Output</p>
+    </div>
+    <div class="spec-card">
+        <p>Availability</p>
+        <h3>2 Port</h3>
+        <p>Simultaneous Charging</p>
+    </div>
+    <div class="spec-card">
+        <p>Location</p>
+        <h3 style="font-size: 1.5rem;">Birpur</h3>
+        <p>Buddhabhumi-1, Kapilvastu</p>
+    </div>
+</div>
 
-    <section style="padding: 50px 5%; text-align: center;" id="location">
-        <h2>Our Main Hub</h2>
-        <p style="margin-bottom: 20px;">Located conveniently for all long-distance travelers.</p>
-        <div style="background: #ddd; height: 300px; border-radius: 15px; display: flex; align-items: center; justify-content: center;">
-            <p>[Interactive Map Placeholder - Supadeurali Location]</p>
+<div class="map-section">
+    <div class="map-box">
+        <div class="map-info">
+            <h2>Find Us in Kapilvastu</h2>
+            <p>Buddhabhumi-1, Birpur, Kapilvastu, Nepal</p>
+            <a href="tel:9857050599" class="contact-btn">
+                📞 Call Support: +977 9857050599
+            </a>
         </div>
-    </section>
+        <!-- Google Maps Frame for P2QR+W8P Area -->
+        <iframe 
+            width="100%" 
+            height="450" 
+            frameborder="0" 
+            style="border:0" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3536.035!2d82.953!3d27.6533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDM5JzExLjkiTiA4MsKwNTcnMTAuOCJF!5e0!3m2!1sen!2snp!4v1714580000000!5m2!1sen!2snp" 
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
 
-    <footer class="footer" id="contact">
-        <h3>Supadeurali Charging Center</h3>
-        <p>Email: info@supadeurali-ev.com | Phone: +977 123456789</p>
-        <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.7;">&copy; 2026 Supadeurali Charging Center. All rights reserved.</p>
-    </footer>
+<footer>
+    <p><strong>Supadeurali Charging Center</strong></p>
+    <p>Buddhabhumi-1, Birpur, Kapilvastu 32810</p>
+    <p>Sunil G.C. </p>
+    <p style="margin-top: 20px; opacity: 0.5; font-size: 0.8rem;">
+        &copy; 2026 Supadeurali EV Network. Fast. Reliable. Green.
+    </p>
+</footer>
 
 </body>
 </html>
